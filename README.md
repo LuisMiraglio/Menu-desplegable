@@ -21,7 +21,10 @@ Este es un proyecto simple de un menú desplegable, creado con el objetivo de pr
 3. Explora y personaliza el código según tus necesidades.
 
 ## Captura de Pantalla
-_Agrega una imagen o GIF del menú en acción si lo deseas._
+![Menu-desplegable](https://github.com/user-attachments/assets/4f55d391-2ef7-4e82-bafe-c58223f32114)
+![Menu-desplegable-](https://github.com/user-attachments/assets/10ceb91c-0506-4e32-893c-a23db38eacc0)
+
+
 
 ## Autor
 **Luis Antonio Miraglio**  
