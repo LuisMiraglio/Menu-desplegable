@@ -3,6 +3,7 @@ const navigation = document.querySelector('.navigation');
 const list = document.querySelectorAll('.list');
 const viewTitle = document.querySelector('#view-title');
 const viewContent = document.querySelector('#view-content');
+const content = document.querySelector('.content');
 
 const views = {
   home: {
@@ -81,6 +82,32 @@ const views = {
   }
 };
 
+function hexToRgba(hex, alpha) {
+  const cleanHex = hex.replace('#', '');
+
+  const fullHex =
+    cleanHex.length === 3
+      ? cleanHex
+          .split('')
+          .map((char) => char + char)
+          .join('')
+      : cleanHex;
+
+  const r = parseInt(fullHex.substring(0, 2), 16);
+  const g = parseInt(fullHex.substring(2, 4), 16);
+  const b = parseInt(fullHex.substring(4, 6), 16);
+
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+function setContentColorFromItem(item) {
+  const color = item.style.getPropertyValue('--clr').trim();
+  if (!color) return;
+
+  const accentColor = hexToRgba(color, 0.18);
+  document.documentElement.style.setProperty('--content-accent', accentColor);
+}
+
 function renderView(viewName) {
   const selected = views[viewName] ?? views.home;
   viewTitle.textContent = selected.title;
@@ -99,7 +126,12 @@ list.forEach((item) => {
     list.forEach((li) => li.classList.remove('active'));
     item.classList.add('active');
     renderView(item.dataset.view);
+    setContentColorFromItem(item);
   });
 });
 
-renderView('home');
+const initialItem = document.querySelector('.list.active');
+renderView(initialItem?.dataset.view || 'home');
+if (initialItem) {
+  setContentColorFromItem(initialItem);
+}

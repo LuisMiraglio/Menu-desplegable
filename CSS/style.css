@@ -11,6 +11,9 @@
   --accent-soft: #ff9d94;
   --border: rgba(255, 255, 255, 0.1);
   --shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
+
+  /* nueva variable para el panel grande */
+  --content-accent: rgba(255, 122, 89, 0.16);
 }
 
 * {
@@ -97,24 +100,19 @@ body {
   transform: translateX(-50%) translateY(-4px) rotate(-45deg);
 }
 
-.brand,
-.profile-card {
+.brand {
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 10px;
   border: 1px solid transparent;
   border-radius: 14px;
-}
-
-.brand {
   margin-bottom: 12px;
   border-color: var(--border);
   background: rgba(255, 255, 255, 0.02);
 }
 
-.brand__logo,
-.profile-card__avatar {
+.brand__logo {
   width: 38px;
   height: 38px;
   border-radius: 12px;
@@ -126,28 +124,24 @@ body {
   flex-shrink: 0;
 }
 
-.brand__meta,
-.profile-card__meta {
+.brand__meta {
   opacity: 0;
   transform: translateX(8px);
   transition: 0.25s ease;
   white-space: nowrap;
 }
 
-.brand__meta strong,
-.profile-card__meta strong {
+.brand__meta strong {
   display: block;
   font-size: 0.88rem;
 }
 
-.brand__meta span,
-.profile-card__meta span {
+.brand__meta span {
   font-size: 0.75rem;
   color: var(--text-muted);
 }
 
 .navigation.open .brand__meta,
-.navigation.open .profile-card__meta,
 .navigation.open .text {
   opacity: 1;
   transform: translateX(0);
@@ -215,16 +209,15 @@ body {
   border-color: var(--clr);
 }
 
-/* Estado activo con color individual */
 .list.active .menu__button {
-  background: color-mix(in srgb, var(--clr) 16%, transparent);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .list.active .icon {
   background: var(--clr);
   color: #fff;
   border-color: transparent;
-  box-shadow: 0 8px 20px color-mix(in srgb, var(--clr) 35%, transparent);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
 }
 
 .list.active::before {
@@ -259,18 +252,15 @@ body {
   opacity: 1;
 }
 
-.profile-card {
-  margin-top: auto;
-  border-color: var(--border);
-  background: rgba(255, 255, 255, 0.02);
-}
-
 .content {
   border: 1px solid var(--border);
   border-radius: 24px;
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+  background:
+    radial-gradient(circle at top left, var(--content-accent), transparent 42%),
+    linear-gradient(165deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
   box-shadow: var(--shadow);
   padding: clamp(18px, 2vw, 28px);
+  transition: background 0.35s ease;
 }
 
 .content__header {
@@ -410,7 +400,6 @@ h1 {
   }
 
   .brand__meta,
-  .profile-card__meta,
   .text {
     opacity: 1;
     transform: none;
@@ -425,7 +414,6 @@ h1 {
   }
 
   .text,
-  .profile-card,
   .brand {
     display: none;
   }
