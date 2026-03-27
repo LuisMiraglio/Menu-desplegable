@@ -160,6 +160,10 @@ body {
   margin-top: 8px;
 }
 
+.list {
+  position: relative;
+}
+
 .menu__button {
   border: none;
   background: transparent;
@@ -178,6 +182,7 @@ body {
 .list .icon {
   width: 42px;
   height: 42px;
+  min-width: 42px;
   border-radius: 12px;
   display: grid;
   place-items: center;
@@ -186,6 +191,10 @@ body {
   background: var(--panel);
   border: 1px solid rgba(255, 255, 255, 0.06);
   transition: 0.25s ease;
+}
+
+.list .icon ion-icon {
+  font-size: 1.25rem;
 }
 
 .text {
@@ -203,17 +212,32 @@ body {
 .menu__button:hover .icon {
   color: var(--text);
   transform: translateY(-1px);
+  border-color: var(--clr);
 }
 
+/* Estado activo con color individual */
 .list.active .menu__button {
-  background: rgba(255, 111, 97, 0.16);
+  background: color-mix(in srgb, var(--clr) 16%, transparent);
 }
 
 .list.active .icon {
-  background: var(--accent);
+  background: var(--clr);
   color: #fff;
   border-color: transparent;
-  box-shadow: 0 8px 20px rgba(255, 111, 97, 0.3);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--clr) 35%, transparent);
+}
+
+.list.active::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 34px;
+  border-radius: 999px;
+  background: var(--clr);
+  box-shadow: 0 0 14px var(--clr);
 }
 
 .list .menu__button::after {
