@@ -1,51 +1,88 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu 1</title>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-    <div class="navigation">
-        <div class="menuToggle"></div>
-        <ul>
-            <li class="list active" style="--clr:#f44336;">
-                <a href="#">
-                    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
-                    <span class="text">Home</span>
-                </a>
-            </li>
-            <li class="list" style="--clr:#ffa117;">
-                <a href="#">
-                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-                    <span class="text">About</span>
-                </a>
-            </li>
-            <li class="list" style="--clr:#0fc70f;">
-                <a href="#">
-                    <span class="icon"><ion-icon name="chatbubble-outline"></ion-icon></span>
-                    <span class="text">Messages</span>
-                </a>
-            </li>
-            <li class="list" style="--clr:#2196f3;">
-                <a href="#">
-                    <span class="icon"><ion-icon name="camera-outline"></ion-icon></span>
-                    <span class="text">Photos</span>
-                </a>
-            </li>
-            <li class="list" style="--clr:#b145e9;">
-                <a href="#">
-                    <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
-                    <span class="text">Settings</span>
-                </a>
-            </li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidebar Premium</title>
+    <link rel="stylesheet" href="./CSS/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="navigation" aria-label="Menú lateral">
+        <button class="menuToggle" type="button" aria-label="Alternar menú"></button>
+
+        <div class="brand">
+          <div class="brand__logo">LM</div>
+          <div class="brand__meta">
+            <strong>Miraglio UI</strong>
+            <span>Panel Sidebar</span>
+          </div>
+        </div>
+
+        <ul class="menu" role="list">
+          <li class="list active" data-view="home">
+            <button class="menu__button" type="button">
+              <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+              <span class="text">Home</span>
+            </button>
+          </li>
+          <li class="list" data-view="about">
+            <button class="menu__button" type="button">
+              <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+              <span class="text">About</span>
+            </button>
+          </li>
+          <li class="list" data-view="messages">
+            <button class="menu__button" type="button">
+              <span class="icon"><ion-icon name="chatbubble-ellipses-outline"></ion-icon></span>
+              <span class="text">Messages</span>
+            </button>
+          </li>
+          <li class="list" data-view="photos">
+            <button class="menu__button" type="button">
+              <span class="icon"><ion-icon name="images-outline"></ion-icon></span>
+              <span class="text">Photos</span>
+            </button>
+          </li>
+          <li class="list" data-view="settings">
+            <button class="menu__button" type="button">
+              <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+              <span class="text">Settings</span>
+            </button>
+          </li>
         </ul>
+
+        <footer class="profile-card">
+          <div class="profile-card__avatar">LA</div>
+          <div class="profile-card__meta">
+            <strong>Luis Miraglio</strong>
+            <span>Frontend Designer</span>
+          </div>
+        </footer>
+      </aside>
+
+      <main class="content" aria-live="polite">
+        <header class="content__header">
+          <div>
+            <p class="content__eyebrow">Mini dashboard</p>
+            <h1 id="view-title">Bienvenido al Home</h1>
+          </div>
+          <span class="status-pill">Online</span>
+        </header>
+
+        <section id="view-content" class="view-grid"></section>
+      </main>
     </div>
 
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>
