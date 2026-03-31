@@ -125,6 +125,7 @@ list.forEach((item) => {
   item.addEventListener('click', () => {
     list.forEach((li) => li.classList.remove('active'));
     item.classList.add('active');
+
     renderView(item.dataset.view);
     setContentColorFromItem(item);
   });
@@ -132,6 +133,7 @@ list.forEach((item) => {
 
 const initialItem = document.querySelector('.list.active');
 renderView(initialItem?.dataset.view || 'home');
+
 if (initialItem) {
   setContentColorFromItem(initialItem);
 }
