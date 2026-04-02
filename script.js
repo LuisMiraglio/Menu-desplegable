@@ -3,7 +3,7 @@ const navigation = document.querySelector('.navigation');
 const list = document.querySelectorAll('.list');
 const viewTitle = document.querySelector('#view-title');
 const viewContent = document.querySelector('#view-content');
-const content = document.querySelector('.content');
+const mobileBreakpoint = window.matchMedia('(max-width: 900px)');
 
 const views = {
   home: {
@@ -114,8 +114,21 @@ function renderView(viewName) {
   viewContent.innerHTML = selected.content;
 }
 
+function syncMenuA11yState() {
+  const isOpen = navigation.classList.contains('open');
+  menuToggle.setAttribute('aria-expanded', String(isOpen));
+}
+
+function closeMobileMenu() {
+  if (mobileBreakpoint.matches) {
+    navigation.classList.remove('open');
+    syncMenuA11yState();
+  }
+}
+
 menuToggle.addEventListener('click', () => {
   navigation.classList.toggle('open');
+  syncMenuA11yState();
 });
 
 list.forEach((item) => {
@@ -128,6 +141,7 @@ list.forEach((item) => {
 
     renderView(item.dataset.view);
     setContentColorFromItem(item);
+    closeMobileMenu();
   });
 });
 
@@ -137,3 +151,28 @@ renderView(initialItem?.dataset.view || 'home');
 if (initialItem) {
   setContentColorFromItem(initialItem);
 }
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    closeMobileMenu();
+  }
+});
+
+document.addEventListener('click', (event) => {
+  const clickOutsideMenu = !navigation.contains(event.target);
+  if (clickOutsideMenu) {
+    closeMobileMenu();
+  }
+});
+
+mobileBreakpoint.addEventListener('change', (event) => {
+  if (!event.matches) {
+    navigation.classList.add('open');
+  }
+  syncMenuA11yState();
+});
+
+if (!mobileBreakpoint.matches) {
+  navigation.classList.add('open');
+}
+syncMenuA11yState();

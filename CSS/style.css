@@ -422,20 +422,22 @@ h1 {
     display: none;
   }
 
-  .brand__meta,
-  .text {
-    opacity: 1;
-    transform: none;
+  .menu {
+    display: none;
+    margin-top: 10px;
   }
 
-.menu {
-  display: none;
-  margin-top: 10px;
-}
+  .navigation.open .menu {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
 
   .menu__button {
-    justify-content: center;
-    padding: 6px;
+    justify-content: flex-start;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
   }
 
   .menu__button::after {
@@ -447,7 +449,9 @@ h1 {
   }
 
   .text {
-    display: none;
+    display: block;
+    opacity: 1;
+    transform: none;
   }
 
   .content {
@@ -468,6 +472,10 @@ h1 {
   .navigation {
     border-radius: 20px;
     padding: 12px;
+  }
+
+  .navigation.open .menu {
+    grid-template-columns: 1fr;
   }
 
   .menu {
@@ -514,22 +522,5 @@ h1 {
   .message {
     flex-direction: column;
     align-items: flex-start;
-  }
-}
-
-@media (max-width: 900px) {
-  .navigation {
-    padding: 14px;
-  }
-
-  .menu {
-    display: none;
-    margin-top: 10px;
-  }
-
-  .navigation.open .menu {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 10px;
   }
 }
